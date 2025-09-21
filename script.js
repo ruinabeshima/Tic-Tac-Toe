@@ -39,6 +39,17 @@ const GameBoard = (function(){
 const GameControl = (function(){
   let player1 = Players("Rui", "O")
   let player2 = Players("Sam", "X")
+
+  let c1r1 = document.getElementById("c1r1")
+  let c2r1 = document.getElementById("c2r1")
+  let c3r1 = document.getElementById("c3r1")
+  let c1r2 = document.getElementById("c1r2")
+  let c2r2 = document.getElementById("c2r2")
+  let c3r2 = document.getElementById("c3r2")
+  let c1r3 = document.getElementById("c1r3")
+  let c2r3 = document.getElementById("c2r3")
+  let c3r3 = document.getElementById("c3r3")
+
   turn = true 
 
   function switchTurns(){
@@ -49,8 +60,19 @@ const GameControl = (function(){
     }
   }
 
+
+  function Damn(symbol){
+    c1r1.addEventListener("click", function(){
+      buttonText = document.createElement("p")
+      buttonText.textContent = symbol
+      buttonText.classList.add("button-symbol")
+      c1r1.appendChild(buttonText)
+    })
+  }
+
   function PlayGame(index){
     if (turn === true){
+      Damn("O")
       console.log(`${player1.name} makes a turn!`)
       let gameBoard = GameBoard.SetBoard(index, "O")
       console.log(gameBoard)
